@@ -5,7 +5,7 @@ const app = express();
 
 const openWeatherMapApiKey = 'b39db0c631ed5b120b9f5b732956c258';
 
-
+app.get("/", (req, res) => res.send("HELLO "));
 
 app.get("/api/hello", async (req, res) => {
    let userId =  req.query.visitor_name;
@@ -38,3 +38,4 @@ app.listen(PORT, () => {
    console.log(`Server running in  ${PORT}`) 
 });
 
+module.exports = app;
