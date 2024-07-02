@@ -4,7 +4,7 @@ const PORT = 3000;
 const app = express();
 
 const openWeatherMapApiKey = 'b39db0c631ed5b120b9f5b732956c258';
-
+app.set('trust proxy', true);
 app.get("/", (req, res) => res.send("HELLO "));
 
 app.get("/api/hello", async (req, res) => {
@@ -13,12 +13,13 @@ app.get("/api/hello", async (req, res) => {
      userId = userId.replace(/"/g, '');
     }
    console.log(userId);
+   const visitorIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     try{
        // const visitorIp = req.ip;
        const ip = await axios.get("https://api.ipify.org?format=json");
        const ipAddr = ip.data.ip;
        console.log(ipAddr);
-       const response = await axios.get(`http://ip-api.com/json/${ipAddr}`);
+       const response = await axios.get(`http://ip-api.com/json/${visitorIp}`);
       console.log(response)
        const city = response.data.city;
        console.log(city);
