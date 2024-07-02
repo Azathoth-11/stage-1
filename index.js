@@ -3,7 +3,7 @@ const axios = require('axios')
 const PORT = 3000;
 const app = express();
 
-const openWeatherMapApiKey = 'b39db0c631ed5b120b9f5b732956c258';
+const openWeatherMapApiKey = process.env.openWeatherMapApiKey;
 app.set('trust proxy', true);
 app.get("/", (req, res) => res.send("HELLO "));
 
