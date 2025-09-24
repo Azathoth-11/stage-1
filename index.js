@@ -5,7 +5,7 @@ const app = express();
 
 const openWeatherMapApiKey = process.env.openWeatherMapApiKey;
 app.set('trust proxy', true);
-app.get("/", (req, res) => res.send("HELLO "));
+app.get("/", (req, res) => res.send("WEBSITE IN WORKS............... "));
 
 app.get("/api/hello", async (req, res) => {
    let userId =  req.query.visitor_name;
